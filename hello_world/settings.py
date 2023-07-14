@@ -14,7 +14,10 @@ from pathlib import Path
 from dotenv import load_dotenv
 import openai
 
-load_dotenv()  # take environment variables from .env.
+load_dotenv(override=True) # override system environment variables with .env
+
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,12 +28,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-rc@04_mry_3-$@2sq$b9%-9jp6q2eyxf4bsw9&&esj++aw&r)p"
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
 
 if 'CODESPACE_NAME' in os.environ:
     codespace_name = os.getenv("CODESPACE_NAME")
@@ -134,7 +137,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "hello_world" / "static",
 ]
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
