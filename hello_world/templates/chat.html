@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat with GPT-4</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+</head>
+<body>
+    <h1 style="color: var(--primary-fg);">Chat with GPT-4</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            <label for="id_message">Message:</label>
+            <textarea name="message" cols="40" rows="10" required id="id_message"></textarea>
+        </p>
+        <div class="chat-footer">
+            <button type="submit" name="send_message">Send</button>
+            <button type="submit" name="new_session">Start New Session</button>
+        </div>
+    </form>
+    
+
+    <hr>
+
+    <h2 style="color: var(--primary-fg);">Chat history:</h2>
+
+    <div class="chat-history">
+        {% for message in messages reversed %}
+            <div class="message {{ message.role }}">
+                <strong>{{ message.role }}:</strong> {{ message.content|linebreaksbr }}
+            </div>
+        {% empty %}
+            <p>No messages yet.</p>
+        {% endfor %}
+    </div>
+
+    <script src="{% static 'django-browser-reload/reload-listener.js' %}" data-worker-script-path="{% static 'django-browser-reload/reload-worker.js' %}" data-events-path="/__reload__/events/" defer></script>
+</body>
+</html>

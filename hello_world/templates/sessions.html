@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Sessions</h2>
+    <ul>
+    {% for session in sessions %}
+        <li>{{ session.id }}: {{ session.session_key }}</li>
+    {% empty %}
+        <li>No sessions found.</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

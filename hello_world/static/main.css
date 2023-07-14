@@ -1,45 +1,67 @@
+:root {
+  --primary-fg: #007BFF;
+  --background: #f8f9fa;
+  --foreground: #ffffff;
+  --border: #dee2e6;
+  --system: #6c757d;
+  --user: #007bff;
+  --assistant: #28a745;
+}
+
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-      monospace;
-  }
-  
-  .App {
-    text-align: center;
-  }
-  
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-  
-  .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
-  
-  .App-link {
-    color: #61dafb;
-  }
-  
-  .heart {
-    color: #ff0000;
-  }
-  
-  .small {
-    font-size: 0.75rem;
-  }
+  background-color: var(--background);
+  color: var(--primary-fg);
+  font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+form {
+  background-color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: .25rem;
+  margin: 1rem auto;
+  padding: 1rem;
+  width: 90%;
+  max-width: 600px;
+}
+
+form p {
+  margin-bottom: 1rem;
+}
+
+form textarea {
+  width: 100%;
+}
+
+.chat-footer {
+  text-align: right;
+}
+
+.chat-history {
+  margin: 1rem auto;
+  width: 90%;
+  max-width: 600px;
+}
+
+.message {
+  background-color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: .25rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.message.system {
+  color: var(--system);
+}
+
+.message.user {
+  color: var(--user);
+}
+
+.message.assistant {
+  color: var(--assistant);
+}

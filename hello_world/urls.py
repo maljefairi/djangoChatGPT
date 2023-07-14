@@ -1,25 +1,15 @@
-"""hello_world URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
+from .views import chat_view, index  # make sure to import index
+from hello_world.core.views import sessions_view
 
-from hello_world.core import views as core_views
+# urls.py
 
 urlpatterns = [
-    path("", core_views.index),
-    path("admin/", admin.site.urls),
-    path("__reload__/", include("django_browser_reload.urls")),
+    path('admin/', admin.site.urls),
+    path('__reload__/', include('django_browser_reload.urls')),
+    path('chat/', chat_view, name='chat_view'),
+    path("sessions/", sessions_view, name='sessions_view'),
+    path("", index, name='index_view'),  
 ]
+

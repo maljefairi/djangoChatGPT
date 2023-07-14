@@ -5,3 +5,10 @@ def index(request):
         "title": "Django example",
     }
     return render(request, "index.html", context)
+
+def sessions_view(request):
+    context = {
+        "title": "Sessions view",
+    }
+    # replace 'sessions.html' with your actual template for sessions view
+    return render(request, "sessions.html", context)
